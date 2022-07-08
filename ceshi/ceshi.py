@@ -19,7 +19,7 @@ Script_Name = "测试"
 Name_Pinyin = "ceshi"
 Script_Change = ""
 Script_Version = "0.0.1"
-VersionCheck = "0.0.2"
+Version_Check = "0.0.2"
 # --------------------------------------------------------------------------------------------
 
 
