@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b374765e-46ea-4b61-aa64-5e78a72d1235" name="变更" comment="移除测试">
-      <change beforePath="$PROJECT_DIR$/.idea/Python.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Python.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tebu/tebu.py" beforeDir="false" afterPath="$PROJECT_DIR$/tebu/tebu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Python_work/.idea/Python_work.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Python_work/.idea/Python_Study.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Python_work/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Python_work/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Python_work/work/tebu.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Python_work/work/tebu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Python_work/work/test11.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Python_work/work/test11.py" afterDir="false" />
-    </list>
+    <list default="true" id="b374765e-46ea-4b61-aa64-5e78a72d1235" name="变更" comment="更新特步" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../Python_work" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2BfPYzfz55EpDAXFEEIYLvtUZ0R" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/yml/PycharmProjects/Python",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.tebu">
     <configuration name="tebu" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python" />
@@ -108,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657294934958</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="更新特步">
+      <created>1657300944391</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1657300944391</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -126,8 +132,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="更新特步" />
     <MESSAGE value="移除测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="移除测试" />
+    <MESSAGE value="更新特步" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新特步" />
   </component>
 </project>
