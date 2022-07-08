@@ -22,9 +22,8 @@ try:
     import os
     import re
     import time
-    from loguru import logger
 except Exception as e:
-    logger.error(e)
+    print(e)
 requests.packages.urllib3.disable_warnings()
 # --------------------------------------------------------------------------------------------
 Script_Name = "特步"
@@ -57,13 +56,13 @@ def last_version(name, mold):
         print(err)
 
 
-def mac_env(tebu_data):
+def mac_env(name):
     global ckArr
     pwd = os.path.dirname(os.path.abspath(__file__)) + os.sep
     path = pwd + ".env"
     with open(path, "r+") as f:
         env = f.read()
-        if tebu_data in env:
+        if name in env:
             r = re.compile(r'tebu_data="(.*?)"', re.M | re.S | re.I)
             result = r.findall(env)
             # print(data[0])
@@ -76,14 +75,14 @@ def mac_env(tebu_data):
             else:
                 ckArr = result
         else:
-            logger.warning("检查变量" + tebu_data + "是否已填写")
+            print("检查变量" + name + "是否已填写")
 
 
-def ql_env(tebu_data):
+def ql_env(name):
     global ckArr
-    if tebu_data in os.environ:
+    if name in os.environ:
         ckArr = []
-        _data = os.environ[tebu_data]
+        _data = os.environ[name]
         if "@" in _data:
             _ck = _data.split("@")
             ckArr = _ck
@@ -91,7 +90,7 @@ def ql_env(tebu_data):
             _ck = _data.split("\n")
             ckArr = _ck
         else:
-            ckArr = _data
+            ckArr = _data.split("@")
 
 
 # mac_env("tebu_data")
@@ -106,8 +105,14 @@ class Script:
         self.userid = userid
 
     def sign_info(self):
-        logger.info("开始 签到信息")
+        print("开始 签到信息")
         url_signinfo = "https://wxa-tp.ezrpro.com/myvip/Vip/SignIn/GetSignInDtlInfo"
+        url_signin = "https://wxa-tp.ezrpro.com/myvip/Vip/SignIn/SignIn"
+        payload = json.dumps({
+            "ActId": 784,
+            "ActRemindStatus": True
+        })
+
         headers = {
             'Host': 'wxa-tp.ezrpro.com',
             'ezr-cop-id': '143',
@@ -124,26 +129,38 @@ class Script:
             response = requests.get(url=url_signinfo, headers=headers, verify=False)
             result = response.json()
             if result["Result"]["VipSignInDtl"]["IsSigInToday"]:
-                logger.info("签到: 您今天已经签到了 ,明天再来吧!")
+                print("签到: 您今天已经签到了 ,明天再来吧!")
                 return
             elif not result["Result"]["VipSignInDtl"]["IsSigInToday"]:
-                logger.info("签到: 您今天未签到 ,去签到喽!")
+                print("签到: 您今天未签到 ,去签到喽!")
             else:
-                logger.error("签到: 获取签到信息失败 ,请检查 变量 是否正确!")
+                print("签到: 获取签到信息失败 ,请检查 变量 是否正确!")
+        except Exception as err:
+            print(err)
+
+        try:
+            response = requests.post(url=url_signin, headers=headers, data=payload, verify=False)
+            result = response.json()
+            print(result)
+            if result["Success"]:
+                print("签到:" + result["Msg"]+" ,获得积分: " + result["Result"]["BonusValue"] + " 个!")
+                return
+            else:
+                print("签到: 获取签到信息失败 ,请检查 变量 是否正确!")
         except Exception as err:
             print(err)
 
 
 def tip():
     global ckArr
-    logger.info("================ 脚本只支持青龙新版 =================")
-    logger.info("============ 具体教程以请自行查看顶部教程 =============\n")
-    logger.info("🔔 " + Script_Name + " ,开始!")
+    print("================ 脚本只支持青龙新版 =================")
+    print("============ 具体教程以请自行查看顶部教程 =============\n")
+    print("🔔 " + Script_Name + " ,开始!")
     origin_version = last_version(Name_Pinyin, 1)
-    logger.info("📌 本地脚本: V " + Script_Version +
-                "    远程仓库版本: V " + origin_version)
-    logger.info("📌 🆙 更新内容: " + Script_Change)
-    logger.info("共发现 " + str(len(ckArr)) + " 个账号!")
+    print("📌 本地脚本: V " + Script_Version +
+          "    远程仓库版本: V " + origin_version)
+    print("📌 🆙 更新内容: " + Script_Change)
+    print("共发现 " + str(len(ckArr)) + " 个账号!")
 
 
 if __name__ == "__main__":
@@ -151,7 +168,7 @@ if __name__ == "__main__":
     global ckArr
     tip()
     for inx, data in enumerate(ckArr):
-        logger.info("=============== 开始第" + str(inx + 1) + "个账号 ===============")
+        print("=============== 开始第" + str(inx + 1) + "个账号 ===============")
         ck = data.split("&")
         Script = Script(ck[0], ck[1], ck[2], ck[3])
         Script.sign_info()
