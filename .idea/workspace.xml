@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b374765e-46ea-4b61-aa64-5e78a72d1235" name="变更" comment="更新特步" />
+    <list default="true" id="b374765e-46ea-4b61-aa64-5e78a72d1235" name="变更" comment="移除测试">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tebu/tebu.py" beforeDir="false" afterPath="$PROJECT_DIR$/tebu/tebu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Python_work/work/tebu.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Python_work/work/tebu.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +19,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2BfPYzfz55EpDAXFEEIYLvtUZ0R" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -40,7 +46,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657294498618</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="移除测试">
+      <created>1657294934958</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1657294934958</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -56,6 +69,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="更新特步" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新特步" />
+    <MESSAGE value="移除测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="移除测试" />
   </component>
 </project>

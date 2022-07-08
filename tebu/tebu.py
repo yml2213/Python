@@ -7,9 +7,9 @@
     Author: yml
     Date: 2022.7.8
     cron: 19 7 * * *    tebu.py
-
+    new Env("特步");
 ================== 青龙--配置文件 ==================
-    变量格式: export tebu_data=' ezr-vuid & ezr-st & ezr-ss & ezr-userid '   ,多账号用 换行 或 @ 分割
+    变量格式: export tebu_data=" ezr-vuid & ezr-st & ezr-ss & ezr-userid "   ,多账号用 换行 或 @ 分割
 
     【教程】:  需要自行用手机抓取 wxa-tp.ezrpro.com 域名的包 , ezr-vuid , ezr-st , ezr-ss , ezr-userid 是 headers 中的参数
 
