@@ -8,7 +8,7 @@
     Date: 2022.7.8
     cron: 19 7 * * *    tebu.py
     new Env("特步");
-================== 青龙--配置文件 ==================
+    ================== 青龙--配置文件 ==================
     变量格式: export tebu_data=" ezr-vuid & ezr-st & ezr-ss & ezr-userid "   ,多账号用 换行 或 @ 分割
 
     【教程】:  需要自行用手机抓取 wxa-tp.ezrpro.com 域名的包 , ezr-vuid , ezr-st , ezr-ss , ezr-userid 是 headers 中的参数
@@ -29,8 +29,8 @@ requests.packages.urllib3.disable_warnings()
 Script_Name = "特步"
 Name_Pinyin = "tebu"
 Script_Change = "特步商城签到 ,第一个 py 脚本"
-Script_Version = "0.0.1"
-Version_Check = "0.0.1"
+Script_Version = "0.1.2"
+Version_Check = "0.1.2"
 
 
 # --------------------------------------------------------------------------------------------
@@ -141,7 +141,7 @@ class Script:
         try:
             response = requests.post(url=url_signin, headers=headers, data=payload, verify=False)
             result = response.json()
-            print(result)
+            # print(result)
             if result["Success"]:
                 print("签到:" + result["Msg"]+" ,获得积分: " + result["Result"]["BonusValue"] + " 个!")
                 return
@@ -170,5 +170,5 @@ if __name__ == "__main__":
     for inx, data in enumerate(ckArr):
         print("=============== 开始第" + str(inx + 1) + "个账号 ===============")
         ck = data.split("&")
-        Script = Script(ck[0], ck[1], ck[2], ck[3])
-        Script.sign_info()
+        tebu = Script(ck[0], ck[1], ck[2], ck[3])
+        tebu.sign_info()
