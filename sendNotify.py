@@ -545,7 +545,7 @@ def send(title, content):
 
     """
 
-    content += '\n\n开源免费By: https://github.com/curtinlv/JD-Script'
+    content += '\n\n佛系薅羊毛 By yml: https://t.me/yml2213_tg'
 
     for i in notify_mode:
 
