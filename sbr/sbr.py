@@ -382,7 +382,7 @@ def msg(data):
     Msg(data)
 
 
-mac_env(f"{Name_Pinyin}_data")
+# mac_env(f"{Name_Pinyin}_data")
 ql_env(f"{Name_Pinyin}_data")
 
 
