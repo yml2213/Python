@@ -1,6 +1,7 @@
 # !/bin/env python3
 # -*- coding: utf-8 -*
 """
+    link: https://raw.githubusercontent.com/yml2213/Python/master/sbr/sbr.py
     new Env("苏泊尔")
     Name: 苏泊尔  小程序    种大米,换实物
     Author: yml
@@ -30,7 +31,7 @@ requests.packages.urllib3.disable_warnings()
 Script_Name = "苏泊尔"
 Name_Pinyin = "sbr"
 Script_Change = "完成 签到, 偷大米, 浏览菜谱 任务"
-Script_Version = "0.0.1"
+Script_Version = "0.0.2"
 
 
 # --------------------------------------------------------------------------------------------
@@ -221,6 +222,9 @@ class Script:
                     _id, num, collect_name = rice_list[i]["id"], rice_list[i]["num"], rice_list[i]["name"]
                     # print(_id, num, _name)
                     self.collect_rice("收大米", _id, num, collect_name)
+            elif result['code'] == 1 and len(rice_list) == 0:
+                msg(f"{name}: 没有可以收获的大米")
+
             elif result['code'] == 2:
                 msg(f"{name}: {result['msg']}, 请自己先打开一次小程序,种大米后在执行脚本!")
             else:
