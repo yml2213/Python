@@ -11,7 +11,7 @@
     邀请码: f02c05c4b481c3a1    感谢支持
 
 
-    7.12    增加通知
+    8.17    每日签到, 每天随机预言无战争   最大礼金投入
     ================== 青龙--配置文件 ==================
     变量格式: export prophecy_data=" rem_token @ rem_token "    多账号用 换行 或 @ 分割
 
@@ -32,7 +32,7 @@ requests.packages.urllib3.disable_warnings()
 # --------------------------------------------------------------------------------------------
 Script_Name = "预言"
 Name_Pinyin = "prophecy"
-Script_Change = "每日签到, 每天预言无战争 100投入"
+Script_Change = "每日签到, 每天随机预言无战争   最大礼金投入"
 Script_Version = "0.1.1"
 
 
