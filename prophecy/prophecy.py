@@ -33,10 +33,25 @@ requests.packages.urllib3.disable_warnings()
 Script_Name = "预言"
 Name_Pinyin = "prophecy"
 Script_Change = "每日签到, 每天随机预言无战争   最大礼金投入"
-Script_Version = "0.1.1"
-
-
+Script_Version = "0.1.2"
 # --------------------------------------------------------------------------------------------
+
+
+def _env():   # 环境配置
+    mac_env(f"{Name_Pinyin}_data")
+    ql_env(f"{Name_Pinyin}_data")
+
+
+def start():
+    for inx, data in enumerate(ckArr):
+        msg("=============== 开始第" + str(inx + 1) + "个账号 ===============")
+        ck = data.split("&")
+        # print(ck[0])
+        # print(ck[1])
+        prophecy = Script(ck[0])
+        prophecy.csrf_token("获取token")
+        prophecy.user_info("用户信息")
+        prophecy.do_sign("签到")
 
 
 class Script:
@@ -222,12 +237,6 @@ class Script:
 
 
 # ====================================================================
-
-
-def main():
-    pass
-
-
 def last_version(name, mold):
     url = ''
     if mold == 1:
@@ -317,7 +326,7 @@ class Msg(object):
             # msg_info = ''
             msg_info = f"{msg_info}\n{self.str_msg}"
         except Exception as err:
-            print(err)
+            # print(err)
             msg_info = "{}".format(self.str_msg)
         sys.stdout.flush()
         # 这代码的作用就是刷新缓冲区。
@@ -356,10 +365,6 @@ def msg(data):
     Msg(data)
 
 
-# mac_env(f"{Name_Pinyin}_data")
-ql_env(f"{Name_Pinyin}_data")
-
-
 def tip():
     print("================ 脚本只支持青龙面板 =================")
     print("============ 具体教程以请自行查看顶部教程 =============\n")
@@ -370,20 +375,9 @@ def tip():
     msg(f"共发现 {str(len(ckArr))} 个账号")
 
 
-def start():
-    for inx, data in enumerate(ckArr):
-        msg("=============== 开始第" + str(inx + 1) + "个账号 ===============")
-        ck = data.split("&")
-        # print(ck[0])
-        # print(ck[1])
-        prophecy = Script(ck[0])
-        prophecy.csrf_token("获取token")
-        prophecy.user_info("用户信息")
-        prophecy.do_sign("签到")
-
-
 if __name__ == "__main__":
-    global ckArr, msg_info, send, cookie_y, token_y
+    global ckArr, msg_info, cookie_y, token_y
+    _env()
     tip()
     start()
     send(f"{Script_Name}", msg_info)
