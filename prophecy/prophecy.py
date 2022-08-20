@@ -58,7 +58,6 @@ class Script:
     def __init__(self, rem_token):
         self.rem_token = rem_token
 
-    # noinspection PyMethodMayBeStatic
     def url(self, name):  # hostname + xxxx
         url = f"https://wprophecy.com/{name}"
         return url
@@ -82,7 +81,7 @@ class Script:
             # print(cookie_y)
             # print(token_y)
         except Exception as err:
-            print('获取cookie失败：\n{0}'.format(err))
+            print('获取cookie失败:\n{0}'.format(err))
 
     def headers_one(self):
         headers = {
@@ -316,29 +315,21 @@ class Msg(object):
                 print(err)
         else:
             print("文件已存在,跳过")
-            pass
-        pass
 
     def message(self):
         global msg_info
         print(self.str_msg)
         try:
-            # msg_info = ''
             msg_info = f"{msg_info}\n{self.str_msg}"
         except Exception as err:
             # print(err)
             msg_info = "{}".format(self.str_msg)
         sys.stdout.flush()
-        # 这代码的作用就是刷新缓冲区。
-        # 当我们打印一些字符时 ,并不是调用print函数后就立即打印的。一般会先将字符送到缓冲区 ,然后再打印。
-        # 这就存在一个问题 ,如果你想等时间间隔的打印一些字符 ,但由于缓冲区没满 ,不会打印。就需要采取一些手段。如每次打印后强行刷新缓冲区。
 
     def main(self):
         global send
         cur_path = os.getcwd()
-        # print(cur_path)
         if os.path.exists(cur_path + "/sendNotify.py"):
-            # noinspection PyBroadException
             try:
                 from sendNotify import send
             except Exception as err:
