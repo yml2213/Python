@@ -38,7 +38,7 @@ Script_Version = "0.1.2"
 
 
 def _env():   # 环境配置
-    mac_env(f"{Name_Pinyin}_data")
+    # mac_env(f"{Name_Pinyin}_data")
     ql_env(f"{Name_Pinyin}_data")
 
 
