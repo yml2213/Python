@@ -12,6 +12,7 @@
 
 
     8.17    每日签到, 每天随机预言无战争   最大礼金投入
+    8-31    签到送礼金已经关闭，只能慢慢攒了
     ================== 青龙--配置文件 ==================
     变量格式: export prophecy_data=" rem_token @ rem_token "    多账号用 换行 或 @ 分割
 
@@ -32,8 +33,8 @@ requests.packages.urllib3.disable_warnings()
 # --------------------------------------------------------------------------------------------
 Script_Name = "预言"
 Name_Pinyin = "prophecy"
-Script_Change = "每日签到, 每天随机预言无战争   最大礼金投入"
-Script_Version = "0.1.2"
+Script_Change = "签到送礼金已经关闭，只能慢慢攒了"
+Script_Version = "1.2"
 # --------------------------------------------------------------------------------------------
 
 
@@ -51,7 +52,9 @@ def start():
         prophecy = Script(ck[0])
         prophecy.csrf_token("获取token")
         prophecy.user_info("用户信息")
-        prophecy.do_sign("签到")
+        prophecy.do_prophecy("执行预言")
+
+        # prophecy.do_sign("签到")
 
 
 class Script:
@@ -73,6 +76,7 @@ class Script:
         try:
             res = requests.request("GET", url, headers=headers, data=payload)
             result = res.json()
+            res.close()
             token_y = result['data']['CSRF-TOKEN']
             cookies = res.cookies
             cookie = requests.utils.dict_from_cookiejar(cookies)
@@ -116,9 +120,10 @@ class Script:
 
     def csrf_token(self, name="更新 csrf-token"):  # 获取 csrf-token
         try:
-            response = requests.get(url=self.url(
+            resp = requests.get(url=self.url(
                 "getCSRFToken"), headers=self.headers_one(), verify=False)
-            result = response.json()
+            result = resp.json()
+            resp.close()
 
             if result['status'] == 1:
                 msg(f"{name}: 成功!")
@@ -134,9 +139,10 @@ class Script:
     def do_sign(self, name):  # 执行签到奖励
         try:
             payload = {}
-            response = requests.post(url=self.url("user/login/reward/claim"), headers=self.headers(), data=payload,
+            resp = requests.post(url=self.url("user/login/reward/claim"), headers=self.headers(), data=payload,
                                      verify=False)
-            result = response.json()
+            result = resp.json()
+            resp.close()
             # print(result)
             if result['status'] == 1:
                 msg(f"{name}: 成功, 获得100礼金!")
@@ -152,9 +158,10 @@ class Script:
 
     def user_info(self, name="用户信息"):  # 用户信息
         try:
-            response = requests.get(url=self.url(
+            resp = requests.get(url=self.url(
                 "user/appuser/info"), headers=self.headers())
-            result = response.json()
+            result = resp.json()
+            resp.close()
             # print(result)
             if result['status'] == 1:
                 phone = result['data']['data']['contactNo']
@@ -170,9 +177,10 @@ class Script:
 
     def max_bet(self, name="最大投入"):  # 最大投入
         try:
-            response = requests.get(url=self.url(
+            resp = requests.get(url=self.url(
                 "betting/max/bet/256/N"), headers=self.headers())
-            result = response.json()
+            result = resp.json()
+            resp.close()
             # print(result)
             if result['status'] == 1:
                 msg(f"{name}: 成功!")
@@ -188,10 +196,11 @@ class Script:
 
     def prophecy_list(self, name="预言列表获取id"):  # 预言列表-返回id
         try:
-            response = requests.get(url=self.url(
+            resp = requests.get(url=self.url(
                 "betting/items?filter=%7B%22language%22%3A%22zh-hans%22%2C%22isActiveRound%22%3A%7B%22in%22%3A%5B%22Y%22%5D%7D%7D"),
                 headers=self.headers())
-            result = response.json()
+            result = resp.json()
+            resp.close()
             # print(result)
             if result['status'] == 1:
                 num = result['data']['itemsCount']
@@ -219,9 +228,10 @@ class Script:
             # print(bet_num)
             payload = f'amountNoWar={bet_num}&roundId={round_id}'
             print(payload)
-            response = requests.post(url=self.url("betting/create"), headers=self.headers2(), data=payload,
+            resp = requests.post(url=self.url("betting/create"), headers=self.headers2(), data=payload,
                                      verify=False)
-            result = response.json()
+            result = resp.json()
+            resp.close()
             # print(result)
 
             if result['status'] == 1:
@@ -246,8 +256,9 @@ def last_version(name, mold):
     try:
         _url = url
         _headers = {}
-        response = requests.get(url=_url, headers=_headers, verify=False)
-        result = response.text
+        resp = requests.get(url=_url, headers=_headers, verify=False)
+        result = resp.text
+        resp.close()
         r = re.compile(r'Script_Version = "(.*?)"')
         _data = r.findall(result)
         if not _data:
@@ -308,9 +319,9 @@ class Msg(object):
             print(f"未找到通知依赖文件,将于脚本执行目录({cur_path})新建:sendNotify.py ")
             try:
                 url = 'https://raw.gh.fakev.cn/yml2213/Python/master/sendNotify.py'
-                response = requests.get(url)
+                resp = requests.get(url)
                 with open('sendNotify.py', "w+", encoding="utf-8") as f:
-                    f.write(response.text)
+                    f.write(resp.text)
             except Exception as err:
                 print(err)
         else:
